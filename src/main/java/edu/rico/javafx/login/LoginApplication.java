@@ -1,20 +1,23 @@
 package edu.rico.javafx.login;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
-import java.io.IOException;
+import java.util.Objects;
 
 public class LoginApplication extends Application {
+
     @Override
-    public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(LoginApplication.class.getResource("login-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setScene(scene);
-        stage.setTitle("Hello!");
-        stage.show();
+    public void start(Stage stage) {
+        stage.setTitle("Poker Stars");
+        stage.getIcons().add(new Image(String.valueOf(LoginApplication.class.getResource("/images/icon.png").toExternalForm())));
+        FXMLManager.setStage(stage);
+        FXMLManager.loadScene("login-view.fxml");
+
+
+        FXMLManager.getStage().setMinHeight(600);
+        FXMLManager.getStage().setMinWidth(800);
     }
 
     public static void main(String[] args) {
