@@ -1,6 +1,5 @@
 package edu.rico.javafx.login.Controllers;
 
-import edu.rico.javafx.login.FXMLManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 

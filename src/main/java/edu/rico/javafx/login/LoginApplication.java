@@ -1,10 +1,9 @@
 package edu.rico.javafx.login;
 
+import edu.rico.javafx.login.Controllers.FXMLManager;
 import javafx.application.Application;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-
-import java.util.Objects;
 
 public class LoginApplication extends Application {
 

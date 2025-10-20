@@ -5,6 +5,7 @@ module edu.rico.javafx.login {
     requires mysql.connector.j;
     requires java.naming;
     requires jakarta.persistence;
+    requires io.github.cdimascio.dotenv.java;
 
 
     opens edu.rico.javafx.login to javafx.fxml, org.hibernate.orm.core;

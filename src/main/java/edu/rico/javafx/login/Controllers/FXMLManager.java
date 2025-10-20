@@ -1,8 +1,7 @@
-package edu.rico.javafx.login;
+package edu.rico.javafx.login.Controllers;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 
 import java.io.IOException;

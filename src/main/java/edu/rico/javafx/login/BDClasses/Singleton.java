@@ -1,12 +1,14 @@
 package edu.rico.javafx.login.BDClasses;
 
 import edu.rico.javafx.login.EntityModels.JugadorModel;
+import io.github.cdimascio.dotenv.Dotenv;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
 
 import java.sql.Date;
 import java.util.List;
@@ -21,8 +23,14 @@ public class Singleton
 
     private Singleton()
     {
+        Dotenv dotenv = Dotenv.load();
+        Configuration cfg = new Configuration();
+        cfg.setProperty("hibernate.connection.url", dotenv.get("DB_URL"));
+        cfg.setProperty("hibernate.connection.driver_class", dotenv.get("DB_DRIVER_MYSQL"));
+        cfg.setProperty("hibernate.connection.username", dotenv.get("DB_USER_MYSQL"));
+        cfg.setProperty("hibernate.dialect", dotenv.get("HIBERNATE_DIALECT_MYSQL"));
         StandardServiceRegistry sr = new StandardServiceRegistryBuilder().configure().build();
-        sf = new MetadataSources(sr).buildMetadata().buildSessionFactory();
+        sf = cfg.buildSessionFactory(sr);
     }
 
     public static Singleton getInstance()
@@ -32,12 +40,6 @@ public class Singleton
             instance = new Singleton();
         }
         return instance;
-    }
-
-    public static boolean verifyPassword(String password)
-    {
-        String hpassword = HashUtil.hashPassword(password);
-        return hpassword != null && hpassword.equals(usuario.getPassword());
     }
 
     public static String createUser(String username, String name, String surname, String email, String birthday, String password)

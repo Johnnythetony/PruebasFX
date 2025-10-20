@@ -2,7 +2,6 @@ package edu.rico.javafx.login.Controllers;
 
 import edu.rico.javafx.login.BDClasses.Singleton;
 import edu.rico.javafx.login.BDClasses.Usuario;
-import edu.rico.javafx.login.FXMLManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -10,9 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
