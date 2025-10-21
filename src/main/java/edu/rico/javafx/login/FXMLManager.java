@@ -1,4 +1,4 @@
-package edu.rico.javafx.login.Controllers;
+package edu.rico.javafx.login;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

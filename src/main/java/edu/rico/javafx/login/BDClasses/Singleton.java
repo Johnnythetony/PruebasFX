@@ -10,6 +10,7 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
+import java.io.File;
 import java.sql.Date;
 import java.util.List;
 
@@ -18,19 +19,40 @@ public class Singleton
     private static Singleton instance;
     private static Usuario usuario;
     private static List<Jugador> jugadores;
-
+    private static Configuration cfg;
     private final SessionFactory sf;
 
     private Singleton()
     {
-        Dotenv dotenv = Dotenv.load();
-        Configuration cfg = new Configuration();
+        Dotenv dotenv = Dotenv.configure()
+                .directory(this.getClass().getClassLoader().getResource(".env").toString())
+                .filename(".env")
+                .load();
+        createConfig();
+        cfg.configure("hibernate.cfg.xml");
         cfg.setProperty("hibernate.connection.url", dotenv.get("DB_URL"));
         cfg.setProperty("hibernate.connection.driver_class", dotenv.get("DB_DRIVER_MYSQL"));
         cfg.setProperty("hibernate.connection.username", dotenv.get("DB_USER_MYSQL"));
-        cfg.setProperty("hibernate.dialect", dotenv.get("HIBERNATE_DIALECT_MYSQL"));
-        StandardServiceRegistry sr = new StandardServiceRegistryBuilder().configure().build();
-        sf = cfg.buildSessionFactory(sr);
+        sf = cfg.buildSessionFactory();
+    }
+
+    private static void createConfig()
+    {
+        cfg = new Configuration();
+        File cfg_file = new File(String.valueOf(Singleton.class.getResource("hibernate.cfg.xml")));
+        if(cfg_file.exists())
+        {
+            cfg.configure("hibernate.cfg.xml");
+        }
+        else
+        {
+            cfg.addAnnotatedClass(Usuario.class);
+            cfg.addAnnotatedClass(Jugador.class);
+            cfg.setProperty("hibernate.dialect","org.hibernate.dialect.MySQLDialect");
+            cfg.setProperty("hibernate.show_sql", "true");
+            cfg.setProperty("hibernate.format_sql", "true");
+            cfg.setProperty("hibernate.hbm2ddl.auto", "update");
+        }
     }
 
     public static Singleton getInstance()

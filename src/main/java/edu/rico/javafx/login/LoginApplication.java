@@ -1,14 +1,19 @@
 package edu.rico.javafx.login;
 
-import edu.rico.javafx.login.Controllers.FXMLManager;
 import javafx.application.Application;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+
+import java.io.InputStream;
 
 public class LoginApplication extends Application {
 
     @Override
     public void start(Stage stage) {
+
+        //InputStream is = getClass().getClassLoader().getResourceAsStream(".env");
+        //System.out.println("¿.env encontrado? " + (is != null));
+
         stage.setTitle("Poker Stars");
         stage.getIcons().add(new Image(String.valueOf(LoginApplication.class.getResource("/images/icon.png").toExternalForm())));
         FXMLManager.setStage(stage);
