@@ -1,7 +1,6 @@
 package edu.rico.javafx.login.EntityModels;
 
-import edu.rico.javafx.login.BDClasses.Jugador;
-import edu.rico.javafx.login.BDClasses.Singleton;
+import edu.rico.javafx.login.DAO.Singleton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -14,11 +13,11 @@ public class ModelHandler
 
     private static List<JugadorModel> initialImport()
     {
-        ArrayList<JugadorModel> playerModelList = new ArrayList();
+        ArrayList<JugadorModel> jugador_model_list = new ArrayList<JugadorModel>();
 
         for(int i = 0; i < Singleton.getJugadores().size(); i++)
         {
-            playerModelList.add(new JugadorModel(
+            jugador_model_list.add(new JugadorModel(
                     Singleton.getJugadores().get(i).getId(),
                     Singleton.getJugadores().get(i).getNombre(),
                     Singleton.getJugadores().get(i).getApellido(),
@@ -27,6 +26,16 @@ public class ModelHandler
                     Singleton.getJugadores().get(i).getEstilo()));
         }
 
-        return playerModelList;
+        return jugador_model_list;
+    }
+
+    public static ObservableList<JugadorModel> getJugadores()
+    {
+        return jugadores;
+    }
+
+    public static void updateDAO()
+    {
+        Singleton.updateDAO(jugadores);
     }
 }

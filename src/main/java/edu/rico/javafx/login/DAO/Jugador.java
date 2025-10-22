@@ -1,4 +1,4 @@
-package edu.rico.javafx.login.BDClasses;
+package edu.rico.javafx.login.DAO;
 
 import jakarta.persistence.*;
 

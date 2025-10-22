@@ -1,7 +1,7 @@
 package edu.rico.javafx.login.Controllers;
 
-import edu.rico.javafx.login.BDClasses.Singleton;
-import edu.rico.javafx.login.BDClasses.Usuario;
+import edu.rico.javafx.login.DAO.Singleton;
+import edu.rico.javafx.login.DAO.Usuario;
 import edu.rico.javafx.login.FXMLManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -69,7 +69,8 @@ public class LoginController implements Initializable
 
         if(Singleton.getUsuario() != null)
         {
-            FXMLManager.loadScene("welcome-view.fxml");
+            //FXMLManager.loadScene("account-view.fxml");
+            FXMLManager.loadScene("usermenu-view.fxml");
             s.close();
         }
         else

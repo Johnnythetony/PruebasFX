@@ -20,6 +20,7 @@
     <center>
         <TableView fx:id="tablaJugadores" BorderPane.alignment="CENTER">
             <columns>
+                <TableColumn fx:id="colId" prefWidth="100.0" text="Id" />
                 <TableColumn fx:id="colNombre" prefWidth="100.0" text="Nombre" />
                 <TableColumn fx:id="colApellido" prefWidth="100.0" text="Apellido" />
                 <TableColumn fx:id="colApodo" prefWidth="90.0" text="Apodo" />
@@ -63,6 +64,7 @@
                 <Button fx:id="btnEliminar" onAction="#handleEliminar" text="Eliminar" />
             </HBox>
             <Button fx:id="btnLimpiar" onAction="#handleLimpiar" text="Limpiar Formulario" />
+            <Button fx:id="btnSubmit" onAction="#handleSubmit" text="Aplicar cambios" />
         </VBox>
     </right>
 </BorderPane>

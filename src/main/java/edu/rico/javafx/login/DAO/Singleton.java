@@ -1,13 +1,11 @@
-package edu.rico.javafx.login.BDClasses;
+package edu.rico.javafx.login.DAO;
 
 import edu.rico.javafx.login.EntityModels.JugadorModel;
 import io.github.cdimascio.dotenv.Dotenv;
+import javafx.collections.ObservableList;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.boot.MetadataSources;
-import org.hibernate.boot.registry.StandardServiceRegistry;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
 import java.io.File;
@@ -180,6 +178,11 @@ public class Singleton
             }
         }
         return "Ha ocurrido un error al intentar actualizar los datos";
+    }
+
+    public static void updateDAO(ObservableList<JugadorModel> jugadores)
+    {
+
     }
 
     public SessionFactory getSessionFactory()
