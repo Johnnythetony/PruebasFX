@@ -12,7 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
@@ -49,7 +49,7 @@ public class LoginController implements Initializable
     private ImageView menuI;
 
     @FXML
-    private HBox parentN;
+    private StackPane parentN;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -69,7 +69,6 @@ public class LoginController implements Initializable
 
         if(Singleton.getUsuario() != null)
         {
-            //FXMLManager.loadScene("account-view.fxml");
             FXMLManager.loadScene("usermenu-view.fxml");
             s.close();
         }
