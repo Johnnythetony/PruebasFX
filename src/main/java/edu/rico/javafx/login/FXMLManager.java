@@ -1,13 +1,12 @@
 package edu.rico.javafx.login;
 
-import io.github.cdimascio.dotenv.Dotenv;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 
-import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
 
 public class FXMLManager
 {
@@ -24,6 +23,7 @@ public class FXMLManager
         try
         {
             Scene scene = new Scene(fxmlLoader.load());
+            scene.getStylesheets().add(FXMLManager.class.getResource("/stylesheets/poker-theme.css").toExternalForm());
             stage.setScene(scene);
             stage.show();
         } catch (IOException e)

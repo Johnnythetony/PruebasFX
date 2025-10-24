@@ -6,6 +6,8 @@ module edu.rico.javafx.login {
     requires java.naming;
     requires jakarta.persistence;
     requires io.github.cdimascio.dotenv.java;
+    requires java.desktop;
+    requires javafx.media;
 
 
     opens edu.rico.javafx.login to javafx.fxml, org.hibernate.orm.core;
